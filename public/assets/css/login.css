@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+*{
+  overflow-anchor: none !important;
+
+}
+
+.alert-warning{
+  margin-bottom: 1rem; 
+  padding: 0.75rem 1.25rem;
+  text-align: center; 
+  border-color: #ffeeba; 
+  background-color: #fff3cd; 
+  color:#856404;
+  border-radius:0.25rem;
+}
+
+.alert-success{
+  margin-bottom: 1rem; 
+  padding: 0.75rem 1.25rem;
+  text-align: center; 
+  border-radius:0.25rem;
+
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  /* background: #37517e; */
+  background: #6711DF;
+
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #37517e;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

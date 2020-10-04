@@ -63,45 +63,34 @@ app.use(function(req,res,next){
 
 });
 
-app.get("/", function(req,res){
-    res.sendFile(__dirname + "/index.html")
-})
+app.get("/", (req,res) => res.sendFile(__dirname + "/index.html"))
+app.get("/Owners" ,(req,res) => res.sendFile(__dirname+"/Owners.html"));
+app.get("/FAQ",(req,res) => res.sendFile(__dirname+"/FAQ.html"));
+app.get("/Success",(req,res) => res.sendFile(__dirname+"/Success.html"));
+app.get("/Failure",(req,res)=> res.sendFile(__dirname+"/Failure.html"));
+app.get("/Signup",(req,res)=>res.render("Signup1"));
 
+app.get("/Login",(req,res)=>res.render("Login-tenant"));
+app.get("/Login2",(req,res) =>res.render("Login-owner"));
 
-app.get("/Owners" , function(req,res){
-    res.sendFile(__dirname+"/Owners.html");
-})
+app.get("/Owner-claims",(req,res) =>res.render("Owner-claims" , {name: req.user.name, type:req.user.type}));
+app.get("/Owner-active",(req,res) =>res.render("Owner-active" , {name: req.user.name, type:req.user.type}));
+app.get("/Owner-pending",(req,res) =>res.render("Owner-pending" , {name: req.user.name, type:req.user.type}));
+app.get("/Owner-create",(req,res) =>res.render("Owner-create" , {name: req.user.name, type:req.user.type}));
 
-app.get("/FAQ",function(req,res){
-    res.sendFile(__dirname+"/FAQ.html");
-})
-
-app.get("/Success",function(req,res){
-    res.sendFile(__dirname+"/Success.html");
-});
-app.get("/Failure",function(req,res){
-    res.sendFile(__dirname+"/Failure.html");
-});
-
-  
-
-app.get("/Signup",function(req,res){
-    res.render("Signup1");
-});
-app.get("/Login",function(req,res){
-    res.render("Login-tenant");
-});
-app.get("/Login2",function(req,res){
-    res.render("Login-owner");
-});
-
+app.get("/Tenant-claims",(req,res) =>res.render("Tenant-claims" , {name: req.user.name, type:req.user.type}));
+app.get("/Tenant-active",(req,res) =>res.render("Tenant-active" , {name: req.user.name, type:req.user.type}));
+app.get("/Tenant-pending",(req,res) =>res.render("Tenant-pending" , {name: req.user.name, type:req.user.type}));
+app.get("/Tenant-create",(req,res) =>res.render("Tenant-create" , {name: req.user.name, type:req.user.type}));
+app.get("/About-us" ,(req,res) => res.sendFile(__dirname+"/About-us.html"));
+app.get("/admin", (req,res)=> res.render('Admin1'));
+app.get("/Tickets",(req,res)=>res.render("Tickets"));
 
 app.post('/Signup', (req,res)=>{
     const {name,email,password,type} = req.body; 
-
+    //searching for user in database
     User.findOne({email:email}).then(user=>{
         if(user){ 
-            // req.flash('message', 'email is already registered!')
             req.session.message = {
                 type: 'warning',
                 intro: 'Email already registered! ',
@@ -110,7 +99,7 @@ app.post('/Signup', (req,res)=>{
               res.redirect('/Signup')
                   }
         else{
-          
+          //register new user
         const newUser = new User ({
             name,
             email,
@@ -134,6 +123,7 @@ app.post('/Signup', (req,res)=>{
                     intro: 'You have been successfully registered! ',
                     message: 'Please log in.'
                   }
+
                 if(req.body.type=="Owner"){
                     res.redirect('/Login2');
 
@@ -150,10 +140,12 @@ app.post('/Signup', (req,res)=>{
 });
 });
 
+//Tenant-dashboard
+
 app.post('/Login',(req,res,next)=> {
     
     passport.authenticate('local',{
-        successRedirect: '/admin1',
+        successRedirect: '/Tenant-dash',
         failureRedirect:'/Login',
         failureFlash: true
     })(req,res,next);
@@ -161,50 +153,31 @@ app.post('/Login',(req,res,next)=> {
 });
 
 
-app.get("/admin1" , ensureAuthenticated, (req,res)=>{
-    res.render('admin1', {name: req.user.name, type:req.user.type})
-});
+app.get("/Tenant-dash",ensureAuthenticated,(req,res) =>res.render("Tenant-dash" , {name: req.user.name, type:req.user.type}));
 
-
+//Owner-dashboard
 app.post('/Login2',(req,res,next)=> {
 
 
     passport.authenticate('local',{
-        successRedirect: '/admin1',
+        successRedirect: '/Owner-dash',
         failureRedirect:'/Login2',
         failureFlash: true
     })(req,res,next);
 });
 
-app.get("/admin1" , ensureAuthenticated, (req,res)=>{
-    res.render('admin1', {name: req.user.name, type: req.user.type})
-});
+app.get("/Owner-dash", ensureAuthenticated,(req,res) =>res.render("Owner-dash" , {name: req.user.name, type:req.user.type}));
 
-
-
-
-
-
-// app.get("/" , ensureAuthenticated, (req,res)=>{
-//     res.render('Tenant', {name: req.user.name})
-// });
-
-
+//Logout
 app.get("/Logout" , function(req,res){
     req.logOut();
     req.session.message = {
         type: 'success',
         intro: 'You are now logged out! ',
-      }
-      if(req.body.type=="Tenant"){
+    }
         res.redirect("/Login");
-
-      }else {
-        res.redirect("/Login2");
     
-          }
 });
-
 
 
 //MailChimp
@@ -221,10 +194,12 @@ app.post("/",function(req,res){
 
 
 var jsonData= JSON.stringify(data);
+// change api key 
 const url='https://us2.api.mailchimp.com/3.0/lists/d6de6e11f3'
 
 const options={
     method: "POST",
+    //change list id 
     auth: "paypad:63bbb120d896b5378a69055286465be5-us2"
 }
 

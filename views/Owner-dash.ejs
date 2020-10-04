@@ -7,18 +7,20 @@
     <title> Admin</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendor/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/css/vendor.bundle.base.css">
+
+
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/admin1.css">
+
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <link rel="" href="https://cdjsnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.">
-
   </head>
-  
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
@@ -37,9 +39,9 @@
           <div class="search-field d-none d-md-block">
             <form class="d-flex align-items-center h-100" action="#">
               <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
+               <div class="input-group-prepend bg-transparent">
                   <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div> 
+                </div>
                 <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
               </div>
             </form>
@@ -53,7 +55,7 @@
                   <!--<span class="availability-status online"></span>-->
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">name</p>
+                  <p class="mb-1 text-black"><%= name %></p>
                 </div>
               </a>
 
@@ -61,58 +63,10 @@
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout">
+                <a class="dropdown-item" href="/Logout">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Signout</a>
               </div>
 
-            </li>
-
-            <li class="nav-item d-none d-lg-block full-screen-link">
-              <a class="nav-link">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-              </a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count-symbol bg-warning"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                <h6 class="p-3 mb-0">Messages</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="assets/img/faces/face4.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                    <p class="text-gray mb-0"> 1 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="assets/img/faces/face2.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-                    <p class="text-gray mb-0"> 15 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="assets/img/faces/face3.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-                    <p class="text-gray mb-0"> 18 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">4 new messages</h6>
-              </div>
             </li>
 
             <li class="nav-item dropdown">
@@ -162,15 +116,6 @@
                 <h6 class="p-3 mb-0 text-center">See all notifications</h6>
               </div>
             </li>
-
-            <li class="nav-item nav-settings d-none d-lg-block">
-              <a class="nav-link" href="#">
-                <i class="mdi mdi-format-line-spacing"></i>
-              </a>
-            </li>
-
-
-            
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
@@ -190,46 +135,46 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">name</span>
-                  <span class="text-secondary text-small">type</span>
+                  <span class="font-weight-bold mb-2"><%=name%></span>
+                  <span class="text-secondary text-small"><%=type%></span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin">
+              <a class="nav-link" href="/Owner-dash">
                 <span class="menu-title">Overview</span>
                 <i class="mdi mdi-chart-arc menu-icon"></i>
               </a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="/Tickets">
-                <span class="menu-title">Tickets</span>
+              <a class="nav-link" href="/Owner-claims">
+                <span class="menu-title">Claims</span>
                 <i class="mdi mdi-ticket menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ideas">
-                <span class="menu-title">Ideas</span>
+              <a class="nav-link" href="/Owner-active">
+                <span class="menu-title">Active PayPad Deposits</span>
                 <i class="mdi mdi-account-multiple menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contacts">
-                <span class="menu-title">Contacts</span>
+              <a class="nav-link" href="/Owner-pending">
+                <span class="menu-title">Pending PayPad Deposits</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Owner-create">
+                <span class="menu-title">Create New PayPad</span>
                 <i class="mdi mdi-key menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/agents">
-                <span class="menu-title">Agents</span>
-                <i class="mdi mdi-book menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/articles">
-                <span class="menu-title">Articles
-                </span>
+              <a class="nav-link" href="/Blog">
+                <span class="menu-title">Blog</span>
                 <i class="mdi mdi-book menu-icon"></i>
               </a>
             </li>
@@ -244,105 +189,114 @@
         </nav>
 
         <!-- partial -->
+        
         <div class="main-panel">
-          <div class="content-wrapper">
+            <div class="content-wrapper">
+
+          <div class="container">
+            <h3 style="margin-bottom: 20px;">Overview</h3>
+
+
+            <div class="purchase-popup">
+
+
+              <div class="row" id="proBanner">
+
+              <div class="col-sm" style="margin: 25px auto">
+                <h3>Rs. 3,20,000</h3>
+                <p>Current PayPad deposit value</p>
+            </div>
+              <div class="col-sm" style="margin:20px auto; padding-right: 10%;">
+                <h3>Total PayPad Value: Rs. 3,50,000 </h3>
+                <p>Total Claims Recieved: Rs. 30,000</p>
+              </div>
+              <div class="col-sm" style="margin:20px auto">
+                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn download-button purchase-button ml-auto" style="margin-bottom: 10px; padding-right: 50px;">Create PayPad</a>
+                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn download-button purchase-button ml-auto">Raise New Claim</a>
+            </div>
+            </div>
+            </div>
+          </div>
+          
+
+
+
+
 
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white mr-2">
                   <i class="mdi mdi-home"></i>
-                </span> Admin Panel </h3>
+                </span> Dashboard </h3>
             </div>
             <div class="row">
-              <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/img/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Unsolved <i class="mdi mdi-timer-sand mdi-24px float-right"></i>
-                    </h4>
-                    <h1 class="mb-5">60</h1>
-                    <h6 class="card-text">Increased by 60%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-primary card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/img/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Overdue <i class="mdi mdi-clock-alert mdi-24px float-right"></i>
-                    </h4>
-                    <h1 class="mb-5">16</h1>
-                    <h6 class="card-text">Increased by 60%</h6>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-info card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/img/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Open <i class="mdi mdi-eye mdi-24px float-right"></i>
-                    </h4>
-                    <h1 class="mb-5">43</h1>
-                    <h6 class="card-text">Decreased by 10%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-success card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/img/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">On Hold <i class="mdi mdi-pause-octagon mdi-24px float-right"></i>
-                    </h4>
-                    <h1 class="mb-5">64</h1>
-                    <h6 class="card-text">Increased by 5%</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mx-0">
-
-              <div class="col-lg-8 mx-0 grid-margin stretch-card" style="background-color: white;">
-                <div class="card my-auto">
-                  <div class="card-body1">
-                    <h4 class="card-title">Todays trends</h4>
-                    <canvas id="areaChart" style="height:350px"></canvas>
-                  </div>
-                </div>
-                
-              </div>
-              <div class="col-lg-4 grid-margin stretch-card">
+              <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Resolved</h4>
-                    <h3 style="text-align: center; padding-bottom:10px;"><strong>449</strong></h3>
-                    
-                    <hr>
-                    <h4 class="card-title" style="text-align: center;">Received</h4>
-                    <h3 style="text-align: center; padding-bottom:10px;"><strong>426</strong></h3>
-                    <hr>
-                    <h4 class="card-title" style="text-align: center;">Average first response time</h4>
-                    <h3 style="text-align: center; padding-bottom:10px;"><strong>33m</strong></h3>
-                    <hr>
-                    <h4 class="card-title" style="text-align: center;">Average response time</h4>
-                    <h3 style="text-align: center; padding-bottom:10px;"><strong>3h 8m</strong></h3>
-                    <hr>
-                    <h4 class="card-title" style="text-align: center;">Resolution within SLA</h4>
-                    <h3 style="text-align: center; padding-bottom:10px;"><strong>92%</strong></h3>
-                    
+                    <h1 class="card-title" style="font-size: larger !important;">All Paypad Properties</h1>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                          <tr>
+                            <th> Address </th>
+                            <th> Tenant Name </th>
+                            <th> PayPad Date </th>
+                            <th> Deposit Size </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Bestech Park</td>
+                          <td> Herman Beck </td>
+                          <td> $ 77.99 </td>
+                          <td> May 15, 2015 </td>
+                          <td><a href="#">View     <i class="fa fa-angle-right"></i></a></td>
+                          </tr>
+                          <tr>
+                            <td>Bestech Park</td>
+                            <td> Herman Beck </td>
+                            <td> $ 77.99 </td>
+                            <td> May 15, 2015 </td>
+                            <td><a href="#">View     <i class="fa fa-angle-right"></i> </a></td>
+  
+                          </tr>
+                          <tr>
+                            <td>Bestech Park</td>
+                          <td> Herman Beck </td>
+                          <td> $ 77.99 </td>
+                          <td> May 15, 2015 </td>
+                          <td><a href="#">View     <i class="fa fa-angle-right"></i> </a></td>
+                          </tr>
+                          <tr>
+                            <td>Bestech Park</td>
+                          <td> Herman Beck </td>
+                          <td> $ 77.99 </td>
+                          <td> May 15, 2015 </td>
+                          <td><a href="#">View     <i class="fa fa-angle-right"></i> </a></td>
+                          </tr>
+                          <tr>
+                            <td>Bestech Park</td>
+                          <td> Herman Beck </td>
+                          <td> $ 77.99 </td>
+                          <td> May 15, 2015 </td>
+                          <td><a href="#">View     <i class="fa fa-angle-right"></i> </a></td>
+                          </tr>
 
-                  </div></div></div>
-
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
+          <!-- content-wrapper ends -->
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -355,8 +309,6 @@
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="../../assets/js/chart.js"></script>
-
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="assets/js/off-canvas.js"></script>
@@ -366,8 +318,6 @@
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
-    <script src="assets/js/pagination.js"></script>
-
     <!-- End custom js for this page -->
   </body>
 </html>
